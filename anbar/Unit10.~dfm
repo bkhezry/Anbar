@@ -1,0 +1,46 @@
+object Form10: TForm10
+  Left = 192
+  Top = 114
+  Width = 696
+  Height = 480
+  Caption = 'Form10'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 168
+    Top = 40
+    Width = 320
+    Height = 120
+    DataSource = DataSource1
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+  end
+  object ADOQuery1: TADOQuery
+    Active = True
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=F:\anbar\db1.mdb;Pe' +
+      'rsist Security Info=False'
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from import_query1')
+    Left = 24
+    Top = 120
+  end
+  object DataSource1: TDataSource
+    DataSet = ADOQuery1
+    Left = 24
+    Top = 160
+  end
+end

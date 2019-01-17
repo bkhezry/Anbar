@@ -1,0 +1,90 @@
+unit Unit3;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, DB, ADODB, StdCtrls, XPMan;
+
+type
+  TForm3 = class(TForm)
+    ADOTable1: TADOTable;
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    Button1: TButton;
+    Button4: TButton;
+    ADOTable2: TADOTable;
+    XPManifest1: TXPManifest;
+    procedure Button1Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm3.Button1Click(Sender: TObject);
+var
+  found:boolean;
+begin
+found:=false;
+adotable2.open;
+adotable2.first;
+
+if (edit1.text='')then
+showmessage('Id is empty')
+else
+
+while (found=false)and(not(adotable2.Eof)) do
+  if (edit1.Text=adotable2['kala_number'] )then begin
+    found:=true;
+    adotable1.open;
+    adotable1.insert;
+    adotable1['kala_number']:=strtoint(edit1.text);
+    adotable1['kala_name']:=edit2.text;
+    adotable1['import']:=strtoint(edit3.text);
+    adotable1['date']:=(edit4.text);
+    adotable1.post
+    end
+  else
+    adotable2.Next;
+
+  if (found=true)then begin
+      adotable2.Edit;
+      adotable2['tedad']:=adotable2['tedad']+(edit3.Text);
+      adotable2.Post;
+      adotable2.UpdateStatus;
+  end
+
+  else
+    showmessage('not found');
+
+ edit1.text:='';
+ edit2.text:='';
+ edit3.text:='';
+ edit4.text:='';
+end;
+
+
+procedure TForm3.Button4Click(Sender: TObject);
+begin
+adotable1.Open;
+adotable1.Delete;
+end;
+
+end.
