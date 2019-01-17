@@ -12,5 +12,12 @@
 کدی که نوشتم رو اینجا منتشر می‌کنم. 
 
 این اسکرین‌شات گویای همه چیز است:
+این بخشی از کد جستجو برای کالا است که دنبال کالا در دیتابیس می‌گرده فقط اون پیام خطایی که میده
+ 
+ ```pascal
+showmessage('You should import kala, In anbar kala is low') 
+ ```
+
+<p align="center"><img src="screenshot/screenshot.png" /></p>
 
 </div>
